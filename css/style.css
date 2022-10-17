@@ -22,7 +22,6 @@ header {
 
 h1 {
   color: #901C1C;
-  margin-right: 100px;
 }
 
 .logo {
@@ -74,4 +73,10 @@ h1 {
 .card-price {
   color: #757575;
   font-size: 0.5625em;
+}
+
+@media screen and (max-width: 1200px){
+  .photographer_section {
+    grid-template-columns: 1fr 1fr;
+  }
 }

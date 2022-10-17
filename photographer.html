@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -15,8 +15,9 @@
     </header>
     <main id="main" aria-hidden="false">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" onclick="displayModal()" aria-label="Bouton de contact du photographe">Contactez-moi</button>
       </div>
+      <div>Trier par</div>
       <div class="photograph-medias">
         <!-- Liste des médias (photos/vidéos) du photographe -->
       </div>
@@ -25,12 +26,18 @@
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" id="modal_close_btn"/>
+          <img src="assets/icons/close.svg" onclick="closeModal()" id="modal_close_btn" tabindex="0" alt="" aria-label="Bouton de fermeture" />
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
+				<form class="modal_form">
+					<div role="group" aria-labelledby="coordonnees">
+						<label for="firstname">Prénom</label>
+						<input type="text" name="firstname" id="firstname" required aria-required="true" />
+            <label for="lastname">Nom</label>
+						<input type="text" name="lastname" id="lastname" required aria-required="true" />
+            <label for="email">Email</label>
+						<input type="email" name="email" id="email" required aria-required="true" />
+            <label for="message">Votre message</label>
+						<textarea name="message" id="message" required aria-required="true"></textarea>
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>

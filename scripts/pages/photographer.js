@@ -1,5 +1,4 @@
-//Mettre le code JavaScript lié à la page photographer.html
-
+// Affichage des infos du photographe
 async function displayPhotographerData(photographer) {
   const photographersSection = document.querySelector(".photograph-header");
   
@@ -7,9 +6,10 @@ async function displayPhotographerData(photographer) {
   const singleUserDOM = photographerModel.getSingleUserDOM();
   photographersSection.appendChild(singleUserDOM.photographerInfos);
   photographersSection.appendChild(singleUserDOM.photographerPhoto);
-  photographersSection.appendChild(singleUserDOM.photographerPrice);
+  photographersSection.appendChild(singleUserDOM.photographerPriceAndLikes);
 };
 
+// Affichage des medias (photos/vidéos) du photographe
 async function displayPhotographerMedias(medias) {
   const photographerMedias = document.querySelector(".photograph-medias");
 
@@ -23,13 +23,13 @@ async function displayPhotographerMedias(medias) {
 async function initSinglePhotographer() {
   // Récupère les datas des photographes
   const { photographers, media } = await getPhotographers();
-  // Récuper l'id dans l'URL
+  // Récupère l'id dans l'URL
   const params = (new URL(document.location)).searchParams;
   const idParam = params.get('id');
   // Isole les données du photographe
   const photographer = photographers.find(photographer => photographer.id == idParam);
   const medias = media.filter(media => media.photographerId == idParam);
-  // Fonction d'affichage du photographe
+  // Fonctions d'affichage du photographe et de ses médias
   displayPhotographerData(photographer);
   displayPhotographerMedias(medias);
 };

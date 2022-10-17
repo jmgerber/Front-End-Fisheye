@@ -27,8 +27,8 @@ function mediaFactory(data) {
       photoCard.appendChild(videoCard);
     }
     // bloc title + likes
-    const photCardInfos = document.createElement('div');
-    photCardInfos.classList.add('photo-card-infos');
+    const photoCardInfos = document.createElement('div');
+    photoCardInfos.classList.add('photo-card-infos');
     // title
     const photoCardTitle = document.createElement('h2');
     photoCardTitle.textContent = title;
@@ -38,10 +38,10 @@ function mediaFactory(data) {
     photoCardLikes.textContent = `${likes} ♥`;
     photoCardLikes.classList.add('photo-card-likes');
 
-    photCardInfos.appendChild(photoCardTitle);
-    photCardInfos.appendChild(photoCardLikes);
+    photoCardInfos.appendChild(photoCardTitle);
+    photoCardInfos.appendChild(photoCardLikes);
     
-    photoCard.appendChild(photCardInfos);
+    photoCard.appendChild(photoCardInfos);
 
     return (photoCard)
   }
