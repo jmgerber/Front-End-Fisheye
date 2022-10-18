@@ -34,14 +34,26 @@ function photographerFactory(data) {
       photographerPhoto.setAttribute('alt', name);
       photographerPhoto.classList.add('photographer-idPhoto');
       
-      // Bloc du prix
+      // Bloc prix et total like
       const photographerPriceAndLikes = document.createElement('div');
       photographerPriceAndLikes.classList.add('price-likes-block');
 
-      const photographerLikes = document.createElement('span');
-      photographerLikes.textContent = "127 ❤";
-      photographerLikes.classList.add('total-like-counter');
+      // Bloc total like
+      const photographerLikes = document.createElement('div');
+      photographerLikes.classList.add('total-like');
 
+      const photographerLikesCounter = document.createElement('p');
+      photographerLikesCounter.classList.add('total-like-counter');
+      photographerLikesCounter.textContent = "0";
+
+      const photographerLikesHeart = document.createElement('span');
+      photographerLikesHeart.textContent = "❤";
+
+      photographerLikes.appendChild(photographerLikesCounter);
+      photographerLikes.appendChild(photographerLikesHeart);
+      
+
+      // Bloc prix
       const photographerPrice = document.createElement('span');
       photographerPrice.classList.add("photographer-price");
       photographerPrice.textContent = `${price}€/jour`;

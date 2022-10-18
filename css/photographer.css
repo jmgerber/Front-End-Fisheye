@@ -45,6 +45,7 @@
 }
 
 .price-likes-block {
+    display: flex;
     position: fixed;
     bottom: 0;
     right: 36px;
@@ -53,6 +54,14 @@
     background-color: #DB8876;
     border-radius: 5px 5px 0 0;
     padding: 16px 30px;
+}
+
+.total-like {
+    display: flex;
+}
+
+.total-like-counter {
+    margin-right: 4px;
 }
 
 .photograph-medias {
@@ -96,6 +105,8 @@
     font-size: 1.5em;
     font-weight: 500;
     margin-left: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .contact_button {
@@ -256,4 +267,27 @@ form textarea {
     top: 0;
     right: -64px;
     cursor: pointer;
+}
+
+/* like button */
+
+.like-btn {
+    align-items: center;
+    background-color: rgba(255, 255, 255, .7);
+    cursor: pointer;
+    height: 30px;
+    padding: 3px 0 0 3px;
+    width: 30px;
+}
+
+.like-btn path {
+    fill: transparent;
+    stroke-width: 6px;
+    stroke: #000;
+    transition: .4s;
+}
+
+.like-btn.wished path  {
+    fill: tomato;
+    stroke: #fff;
 }

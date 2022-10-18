@@ -17,7 +17,7 @@ async function displayPhotographerMedias(medias) {
     const photoCardModel = mediaFactory(media, index);
     const photoCardDOM = photoCardModel.getPhotoCardDOM();
     photographerMedias.appendChild(photoCardDOM);
-});
+  });
 }
 
 // Création du caroussel pour les médias de la page
@@ -28,7 +28,7 @@ async function initMediasCarousel(medias) {
     const mediaModel = carouselFactory(media, index);
     const slideDOM = mediaModel.getSlideDOM();
     slider.appendChild(slideDOM);
-  })
+  });
 }
 
 async function initSinglePhotographer() {
@@ -40,10 +40,12 @@ async function initSinglePhotographer() {
   // Isole les données du photographe
   const photographer = photographers.find(photographer => photographer.id == idParam);
   const medias = media.filter(media => media.photographerId == idParam);
-  // Fonctions d'affichage du photographe et de ses médias
+  // Fonctions d'affichage du photographe, de ses médias, et du caroussel
   displayPhotographerData(photographer);
   displayPhotographerMedias(medias);
   initMediasCarousel(medias);
+  // Calcule le nombre total de likes du photographe
+  getTotalLikes(medias);
 };
 
 initSinglePhotographer();
