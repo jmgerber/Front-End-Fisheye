@@ -26,7 +26,7 @@
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" id="modal_close_btn" tabindex="0" alt="" aria-label="Bouton de fermeture" />
+          <img src="assets/icons/close.svg" onclick="closeModal()" id="modal_close_btn" tabindex="0" alt="" aria-label="Bouton de fermeture du formulaire" />
         </header>
 				<form class="modal_form">
 					<div role="group" aria-labelledby="coordonnees">
@@ -43,10 +43,19 @@
 				</form>
 			</div>
 		</div>
+    <div id="lightbox" role="dialog" aria-hidden="true">
+      <div class="btn-nav btn-prev" aria-label="Bouton pour accéder à la photo précédente"><</div>
+      <div class="slider">
+        <img src="assets/icons/close_red.svg" onclick="closeLightbox()" id="lightbox-close-btn" tabindex="0" alt="" aria-label="Bouton de fermeture" />
+      </div>
+      <div class="btn-nav btn-next" aria-label="Bouton pour accéder à la photo suivante">></div>
+    </div>
     <script src="scripts/api/photographerApi.js"></script>
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/factories/media.js"></script>
+    <script src="scripts/factories/carousel.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="/scripts/utils/lightbox.js"></script>
   </body>
 </html>

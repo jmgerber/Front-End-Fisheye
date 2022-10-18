@@ -13,11 +13,22 @@ async function displayPhotographerData(photographer) {
 async function displayPhotographerMedias(medias) {
   const photographerMedias = document.querySelector(".photograph-medias");
 
-  medias.forEach((media) => {
-    const photoCardModel = mediaFactory(media);
+  medias.forEach((media, index) => {
+    const photoCardModel = mediaFactory(media, index);
     const photoCardDOM = photoCardModel.getPhotoCardDOM();
     photographerMedias.appendChild(photoCardDOM);
 });
+}
+
+// Création du caroussel pour les médias de la page
+async function initMediasCarousel(medias) {
+  const slider = document.querySelector(".slider");
+
+  medias.forEach((media,index) => {
+    const mediaModel = carouselFactory(media, index);
+    const slideDOM = mediaModel.getSlideDOM();
+    slider.appendChild(slideDOM);
+  })
 }
 
 async function initSinglePhotographer() {
@@ -32,6 +43,7 @@ async function initSinglePhotographer() {
   // Fonctions d'affichage du photographe et de ses médias
   displayPhotographerData(photographer);
   displayPhotographerMedias(medias);
+  initMediasCarousel(medias);
 };
 
 initSinglePhotographer();

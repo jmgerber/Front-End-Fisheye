@@ -1,5 +1,5 @@
-function mediaFactory(data) {
-  const { id, photographerId, title, image, video, likes, date } = data;
+function mediaFactory(data, index) {
+  const { title, image, video, likes } = data;
 
   const picture = `./assets/photographers/photos/${image}`;
   const videoSrc = `./assets/photographers/photos/${video}`;
@@ -7,13 +7,16 @@ function mediaFactory(data) {
   function getPhotoCardDOM() {
     const photoCard = document.createElement('div');
     photoCard.classList.add('photo-card');
+    photoCard.dataset.id = index;
+    const mediaCard = document.createElement('div');
+    mediaCard.classList.add('media-card');
     if (image){
       // bloc image
       const photoCardImage = document.createElement('img');
       photoCardImage.setAttribute('src', picture);
       photoCardImage.setAttribute('alt', title);
       photoCardImage.classList.add('photo-card-image');
-      photoCard.appendChild(photoCardImage);
+      mediaCard.appendChild(photoCardImage);
     }
     else if (video){
       // bloc video
@@ -24,8 +27,11 @@ function mediaFactory(data) {
       videoSource.setAttribute('type', 'video/mp4');
       videoCard.classList.add('video-card-image');
       videoCard.appendChild(videoSource);
-      photoCard.appendChild(videoCard);
+      mediaCard.appendChild(videoCard);
     }
+    mediaCard.addEventListener("click", function() {
+      displayLightbox(index);
+    })
     // bloc title + likes
     const photoCardInfos = document.createElement('div');
     photoCardInfos.classList.add('photo-card-infos');
@@ -37,10 +43,11 @@ function mediaFactory(data) {
     const photoCardLikes = document.createElement('span');
     photoCardLikes.textContent = `${likes} ♥`;
     photoCardLikes.classList.add('photo-card-likes');
-
+    photoCardInfos.appendChild(photoCardTitle);
     photoCardInfos.appendChild(photoCardTitle);
     photoCardInfos.appendChild(photoCardLikes);
-    
+
+    photoCard.appendChild(mediaCard);
     photoCard.appendChild(photoCardInfos);
 
     return (photoCard)
