@@ -46,6 +46,8 @@ async function initSinglePhotographer() {
   initMediasCarousel(medias);
   // Calcule le nombre total de likes du photographe
   getTotalLikes(medias);
+
+  initSorter(medias);
 };
 
 initSinglePhotographer();
