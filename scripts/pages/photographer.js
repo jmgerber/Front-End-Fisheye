@@ -7,7 +7,7 @@ async function displayPhotographerData(photographer) {
   photographersSection.appendChild(singleUserDOM.photographerInfos);
   photographersSection.appendChild(singleUserDOM.photographerPhoto);
   photographersSection.appendChild(singleUserDOM.photographerPriceAndLikes);
-};
+}
 
 // Affichage des medias (photos/vidéos) du photographe
 async function displayPhotographerMedias(medias) {
@@ -48,6 +48,6 @@ async function initSinglePhotographer() {
   getTotalLikes(medias);
 
   initSorter(medias);
-};
+}
 
 initSinglePhotographer();
