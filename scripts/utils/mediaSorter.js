@@ -44,36 +44,77 @@ function mediaSorter(medias) {
 async function initSorter(medias) {
   const photographerMedias = document.querySelector(".photograph-medias");
   const slider = document.querySelector(".slider");
-  const formSelect = document.querySelector('.sorter-form');
+  const sortItems = document.querySelectorAll(".sort-items");
+  const sortList = document.querySelector(".sort-list");
   const sorter = mediaSorter(medias);
-  
-  formSelect.addEventListener('change', function (event) {
-    const sortBy = event.target.value;
-    let sortedData
-    if (sortBy === 'date') {
-      sortedData = sorter.sortByDate();
-    } else if (sortBy === 'popularity') {
-      sortedData = sorter.sortByPopularity();
-    } else if (sortBy === 'title') {
-      sortedData = sorter.sortByTitle();
-    } else {
-      console.log("Un problème a eu lieu lors du tri");
-    }
+  let sortedData
 
-    // Mise à jour des medias
+  function openMenu() {
+    const actualSorting = document.querySelector(".actual-sorting");
+    sortItems.forEach(item => item.style.display = "flex");
+    sortList.setAttribute("aria-expanded", "true");
+    actualSorting.classList.remove("close");
+    actualSorting.classList.add("open");
+  }
+
+  function closeMenu() {
+    const actualSorting = document.querySelector(".actual-sorting");
+    sortItems.forEach(item => item.style.display = "none");
+    actualSorting.style.display = "flex";
+    sortList.setAttribute("aria-expanded", "false");
+    actualSorting.classList.remove("open");
+    actualSorting.classList.add("close");
+  }
+
+  sortList.addEventListener('click', function() {
+    if (sortList.getAttribute("aria-expanded") === "false") {
+      openMenu();
+    }
+  })
+
+  sortItems.forEach(item => {
+    item.addEventListener('click', function(event) {
+      const sortBy = item.id;
+      
+      const actualSort = document.querySelector(".actual-sorting");
+      if (sortList.getAttribute("aria-expanded") === "true") {
+        actualSort.classList.remove("actual-sorting");
+        item.classList.add("actual-sorting");
+        actualSort.style.order = "1";
+        item.style.order = "0";
+
+        if (sortBy === "popularity"){
+          sortedData = sorter.sortByPopularity();
+        } else if (sortBy === "date") {
+          sortedData = sorter.sortByDate();
+        } else if (sortBy === "title") {
+          sortedData = sorter.sortByTitle();
+        }
+        closeMenu()
+        updateMedia()
+        updateCarousel()
+        event.stopPropagation()
+      }
+    })
+  });
+
+  // Mise à jour des medias
+  function updateMedia() {
     photographerMedias.innerHTML = "";
     sortedData.forEach((media, index) => {
       const photoCardModel = mediaFactory(media, index);
       const photoCardDOM = photoCardModel.getPhotoCardDOM();
       photographerMedias.appendChild(photoCardDOM);
     });
+  }
 
-    // Mise à jour du caroussel
+  // Mise à jour du caroussel
+  function updateCarousel() {
     slider.innerHTML = "<img src='assets/icons/close_red.svg' onclick='closeLightbox()' id='lightbox-close-btn' tabindex='0' alt='' aria-label='Bouton de fermeture' />";
     sortedData.forEach((media,index) => {
       const mediaModel = carouselFactory(media, index);
       const slideDOM = mediaModel.getSlideDOM();
       slider.appendChild(slideDOM);
-    });
-  })
+    })
+  }
 }

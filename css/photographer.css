@@ -73,6 +73,7 @@
 }
 
 .media-card {
+    display: block;
     cursor: pointer;
 }
 
@@ -136,6 +137,7 @@
     width: 100vw;
     height: 100vh;
     background-color: rgba(255,255,255, 0.5);
+    z-index: 3;
 }
 
 .modal {
@@ -219,6 +221,7 @@ form textarea {
     background-color: #fefefe;
     align-items: center;
     justify-content: center;
+    z-index: 3;
 }
 
 .slider {
@@ -298,39 +301,64 @@ form textarea {
     stroke: #fff;
 }
 
-/* Sort form */
+/* Sort list */
 
-.sorter-form {
-    flex-direction: row;
-    align-items: center;
+.sort-menu {
+    position: relative;
 }
 
-.sorter-form label {
-    font-size: 1.125em;
-    font-weight: 700;
+.sort-menu p {
     margin-right: 25px;
+    font-weight: 700;
+    font-size: 1.125em;
 }
 
-.sorter-form select {
-    font-family: "DM Sans", sans-serif;
+.sort-list {
+    position: absolute;
+    top: -20px;
+    left: 90px;
+    display: flex;
+    flex-direction: column;
+    width: 170px;
     background-color: #901C1C;
+    border-radius: 5px;
+    padding: 0 20px;
+    z-index: 2;
+}
+
+.sort-items {
+    font-family: "DM Sans", sans-serif;
     color: #fefefe;
     font-size: 1.125em;
     font-weight: 700;
-    width: 170px;
-    height: 70px;
     border: none;
-    border-radius: 5px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url("data:image/svg+xml;utf8,<svg width='16' height='11' viewBox='0 0 16 11' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M14.12 0.453125L8 6.55979L1.88 0.453125L0 2.33312L8 10.3331L16 2.33312L14.12 0.453125Z' fill='white'/></svg>");
-    background-repeat: no-repeat;
-    background-position-x: calc(100% - 10px);
-    background-position-y: 50%;
-    padding-left: 20px;
+    height: 70px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: transparent;
     cursor: pointer;
+    order: 1;
+    display: none;
 }
 
-.sorter-form option {
-    border-bottom: 1px solid black;
+.sort-items:not(.actual-sorting) {
+    border-top: 1px solid #fefefe;
+}
+
+.actual-sorting {
+    justify-content: space-between;
+    display: flex;
+}
+
+.actual-sorting.close::after {
+    content: ">";
+    color: white;
+    transform: rotate(90deg);
+}
+
+.actual-sorting.open::after {
+    content: ">";
+    color: white;
+    transform: rotate(-90deg);
 }

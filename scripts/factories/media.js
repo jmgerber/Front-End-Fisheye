@@ -9,8 +9,9 @@ function mediaFactory(data, index) {
     const photoCard = document.createElement('div');
     photoCard.classList.add('photo-card');
     photoCard.dataset.id = index;
-    const mediaCard = document.createElement('div');
+    const mediaCard = document.createElement('a');
     mediaCard.classList.add('media-card');
+    mediaCard.setAttribute("href", "#");
     if (image){
       // bloc image
       const photoCardImage = document.createElement('img');
