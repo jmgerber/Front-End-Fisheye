@@ -20,8 +20,8 @@
       <div class="sort-menu">
         <p>Trier par</p>
         <div class="sort-list" aria-haspopup="true" aria-expanded="false" role="listbox">
-          <button role="option" class="sort-items close actual-sorting" id="popularity">Popularité</button>
-          <button role="option" class="sort-items" id="date">Date</button>
+          <button role="option" class="sort-items close actual-sorting" id="date">Date</button>
+          <button role="option" class="sort-items" id="popularity">Popularité</button>
           <button role="option" class="sort-items" id="title">Titre</button>
         </div>
       </div>
@@ -33,10 +33,12 @@
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" id="modal_close_btn" tabindex="0" alt="" aria-label="Bouton de fermeture du formulaire" />
+          <button id="modal_close_btn" onclick="closeModal()">
+            <img src="assets/icons/close.svg" alt="" aria-label="Bouton de fermeture du formulaire" />
+          </button>
         </header>
 				<form class="modal_form">
-					<div role="group" aria-labelledby="coordonnees">
+					<div role="group">
 						<label for="firstname">Prénom</label>
 						<input type="text" name="firstname" id="firstname" required aria-required="true" />
             <label for="lastname">Nom</label>
@@ -54,8 +56,10 @@
       <div class="btn-nav btn-prev" aria-label="Bouton pour accéder à la photo précédente"><</div>
       <div class="slider">
         <!-- Liste des médias (photos/vidéos) du photographe dans le caroussel -->
-        <img src="assets/icons/close_red.svg" onclick="closeLightbox()" id="lightbox-close-btn" tabindex="0" alt="" aria-label="Bouton de fermeture" />
       </div>
+      <button id="lightbox-close-btn" onclick="closeLightbox()">
+        <img src="assets/icons/close_red.svg" alt="" aria-label="Bouton de fermeture" />
+      </button>
       <div class="btn-nav btn-next" aria-label="Bouton pour accéder à la photo suivante">></div>
     </div>
     <script src="scripts/api/photographerApi.js"></script>

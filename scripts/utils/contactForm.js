@@ -7,8 +7,8 @@ function displayModal() {
   modal.style.display = "flex";
   modal.setAttribute("aria-hidden", "false");
   main.setAttribute("aria-hidden", "true");
-  modalCloseBtn.focus();
   body.classList.add("no-scroll");
+  modalCloseBtn.focus();
 }
 
 function closeModal() {

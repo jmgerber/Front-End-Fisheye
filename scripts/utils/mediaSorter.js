@@ -110,7 +110,7 @@ async function initSorter(medias) {
 
   // Mise à jour du caroussel
   function updateCarousel() {
-    slider.innerHTML = "<img src='assets/icons/close_red.svg' onclick='closeLightbox()' id='lightbox-close-btn' tabindex='0' alt='' aria-label='Bouton de fermeture' />";
+    slider.innerHTML = "";
     sortedData.forEach((media,index) => {
       const mediaModel = carouselFactory(media, index);
       const slideDOM = mediaModel.getSlideDOM();

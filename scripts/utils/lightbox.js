@@ -1,6 +1,7 @@
 const lightbox = document.getElementById("lightbox");
 const btnNext = document.querySelector(".btn-next");
 const btnPrev = document.querySelector(".btn-prev");
+const lightboxCloseBtn = document.querySelector("#lightbox-close-btn");
 let counter = 0;
 let sliderItems = [];
 
@@ -12,6 +13,7 @@ function displayLightbox(index) {
   body.classList.add("no-scroll");
   lightbox.setAttribute("aria-hidden", "false");
   main.setAttribute("aria-hidden", "true");
+  lightboxCloseBtn.focus();
 }
 
 function closeLightbox() {

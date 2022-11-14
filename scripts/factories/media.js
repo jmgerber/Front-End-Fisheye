@@ -24,6 +24,7 @@ function mediaFactory(data, index) {
       // bloc video
       const videoCard = document.createElement('video');
       videoCard.setAttribute('alt', title);
+      videoCard.setAttribute('tabindex', '-1');
       const videoSource = document.createElement('source');
       videoSource.setAttribute('src', videoSrc);
       videoSource.setAttribute('type', 'video/mp4');
@@ -44,7 +45,7 @@ function mediaFactory(data, index) {
     // likes
     const photoCardLikes = document.createElement('div');
     const photoCardLikesCounter = document.createElement('p');
-    const photoCardLikesHeart = document.createElement('div');
+    const photoCardLikesHeart = document.createElement('button');
     photoCardLikesHeart.innerHTML = `
     <svg class="heart" viewBox="0 0 241.59736 220.05746">
       <g transform="translate(-175.32265,-1696.4765)">
